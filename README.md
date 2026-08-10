@@ -357,7 +357,7 @@ robot: { label: '機器人', color: '#5AB0A8' },
 打開 `assets/css/style.css`，最上面 `:root {` 裡面找到：
 
 ```css
---point: #2B4EE6;   /* ★ 主色（韓系科技藍） */
+--point: #E4562F;   /* ★ 主色（橘紅） */
 ```
 
 改成別的色碼，全站的重點色（連結、圖例、平面圖標示）會一起變。
@@ -366,8 +366,12 @@ robot: { label: '機器人', color: '#5AB0A8' },
 
 | 變數 | 用途 |
 |---|---|
-| `--paper` | 頁面底色 |
-| `--ink` | 主要文字色 |
+| `--point` | 主色橘紅（連結、圖例、標題漸層起點） |
+| `--point-lite` | 淺橘（標題漸層終點） |
+| `--point-soft` | 主色的極淺底色（標籤、房間色塊） |
+| `--paper` | 頁面底色（暖米白） |
+| `--ink` | 主要文字色（暖黑） |
+| `--deep` | 深色區塊底（待辦清單面板、分機標籤） |
 | `--line` | 分隔線 |
 | `--signal` | 警示紅（會議室規則那塊） |
 
@@ -377,12 +381,13 @@ robot: { label: '機器人', color: '#5AB0A8' },
 
 ```html
 <h1 class="hero__title">
-  座位、分機、規定，<br>
-  <span class="thin">一頁就找得到。</span>
+  探索 <span data-bind="centerShort">AIRIC</span> 團隊，<br>
+  <span class="point">開啟您的創新之旅</span>
 </h1>
 ```
 
-`<br>` 是換行，`class="thin"` 是淡灰細體，`class="point"` 是主色。
+`<br>` 是換行，`class="point"` 是橘紅漸層，`class="thin"` 是淡灰細體。
+上方的歡迎標籤在 `class="hero__eyebrow"` 那一行。
 
 ### 改兩張平面圖
 

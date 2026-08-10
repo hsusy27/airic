@@ -5,21 +5,24 @@
 
 /* ---------- 1. 設計變數 ---------- */
 :root {
-  /* 色票 */
-  --paper:      #F3F3F1;   /* 頁面底色：中性紙灰 */
+  /* 色票 —— 淺橘紅（warm coral） */
+  --paper:      #FBF6F2;   /* 頁面底色：暖米白 */
   --surface:    #FFFFFF;
-  --surface-2:  #FAFAF9;
-  --ink:        #101013;   /* 主要文字 */
-  --ink-70:     #46464F;
-  --ink-45:     #8A8A93;
-  --ink-25:     #BFBFC4;
-  --line:       #E4E4E1;
-  --line-soft:  #EFEFEC;
-  --point:      #2B4EE6;   /* ★ 主色（韓系科技藍） */
-  --point-ink:  #1B36AE;
-  --point-soft: #EDF0FF;
-  --signal:     #DC3A28;   /* 警示紅，只用在必讀事項 */
-  --signal-soft:#FDEEEC;
+  --surface-2:  #FDF7F3;
+  --ink:        #1C1512;   /* 主要文字：暖黑 */
+  --ink-70:     #574943;
+  --ink-45:     #93827A;
+  --ink-25:     #C7B4AA;
+  --line:       #EDE0D8;
+  --line-soft:  #F5EAE3;
+  --point:      #E4562F;   /* ★ 主色（橘紅） */
+  --point-ink:  #BE3F1C;   /* 深一階，用在小字才夠清楚 */
+  --point-soft: #FDECE4;
+  --point-line: #F7D6C6;
+  --point-lite: #F5945F;   /* 淺橘，漸層與點綴 */
+  --deep:       #2A1913;   /* 深色區塊底（暖褐） */
+  --signal:     #D33B23;
+  --signal-soft:#FDEBE7;
 
   /* 字體 */
   --font-sans: 'Pretendard Variable', Pretendard, 'Noto Sans TC',
@@ -54,7 +57,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; }
 
-::selection { background: var(--ink); color: #fff; }
+::selection { background: var(--point); color: #fff; }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -121,17 +124,25 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--ink-45); margin-bottom: 26px;
+  color: var(--point-ink); margin-bottom: 26px;
+  font-family: var(--font-sans); font-size: 12.5px; font-weight: 600; letter-spacing: -0.01em;
+  background: var(--point-soft); border: 1px solid var(--point-line);
+  padding: 6px 14px 6px 11px; border-radius: 99px;
 }
 .hero__eyebrow::before {
   content: ''; width: 6px; height: 6px; border-radius: 99px; background: var(--point);
+  animation: dot-pulse 2.4s ease-in-out infinite;
 }
+@keyframes dot-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 .hero__title {
   margin: 0; font-size: clamp(33px, 5.6vw, 62px); line-height: 1.24;
   font-weight: 800; letter-spacing: -0.045em;
 }
 .hero__title .thin { font-weight: 300; color: var(--ink-45); }
-.hero__title .point { color: var(--point); }
+.hero__title .point {
+  background: linear-gradient(96deg, var(--point) 0%, var(--point-lite) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .hero__lead {
   margin: 26px 0 0; max-width: 46ch; color: var(--ink-70); font-size: 15.5px;
 }
@@ -222,10 +233,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------- 6. 待辦清單 ---------- */
 .check-panel {
-  background: var(--ink); color: #fff; border-radius: var(--r-xl);
+  background: var(--deep); color: #fff; border-radius: var(--r-xl);
   padding: clamp(26px, 4vw, 44px);
 }
-.check-panel .sec-head__label { color: #8C9BFF; }
+.check-panel .sec-head__label { color: var(--point-lite); }
 .check-panel .sec-head__title { color: #fff; }
 .check-panel .sec-head__desc { color: rgba(255,255,255,.5); }
 
@@ -261,10 +272,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border: 1.5px solid rgba(255,255,255,.3); display: grid; place-items: center;
   transition: .18s ease;
 }
-.check-box svg { width: 11px; height: 11px; opacity: 0; stroke: var(--ink); }
+.check-box svg { width: 11px; height: 11px; opacity: 0; stroke: var(--deep); }
 .check-item input:checked + .check-box { background: #fff; border-color: #fff; }
 .check-item input:checked + .check-box svg { opacity: 1; }
-.check-item input:focus-visible + .check-box { outline: 2px solid #8C9BFF; outline-offset: 2px; }
+.check-item input:focus-visible + .check-box { outline: 2px solid var(--point-lite); outline-offset: 2px; }
 .check-item__t { font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; transition: .18s; }
 .check-item__d { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; }
 .check-item input:checked ~ div .check-item__t { color: rgba(255,255,255,.4); text-decoration: line-through; }
@@ -286,12 +297,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-radius: var(--r-lg); padding: 20px 22px;
   background: var(--signal-soft); border: 1px solid #F6D5D0;
 }
-.notice--calm { background: var(--point-soft); border-color: #D9E0FF; }
+.notice--calm { background: var(--surface); border-color: var(--line); }
 .notice__h {
   display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700;
   color: var(--signal); margin-bottom: 12px; letter-spacing: -0.01em;
 }
-.notice--calm .notice__h { color: var(--point-ink); }
+.notice--calm .notice__h { color: var(--ink); }
 .notice ul { margin: 0; padding-left: 0; list-style: none; }
 .notice li {
   position: relative; padding-left: 20px; font-size: 13px; color: var(--ink-70);
@@ -307,15 +318,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .dwg-wall   { stroke: var(--ink); stroke-width: 2.4; fill: none; }
 .dwg-thin   { stroke: var(--ink-25); stroke-width: 1.2; fill: none; }
 .dwg-fill   { fill: var(--surface-2); stroke: var(--line); stroke-width: 1; }
-.dwg-room   { fill: var(--point-soft); stroke: #D3DBFF; stroke-width: 1; }
+.dwg-room   { fill: var(--point-soft); stroke: var(--point-line); stroke-width: 1; }
 .dwg-key    { fill: var(--signal); }
 .dwg-label  { font-family: var(--font-sans); font-size: 14px; font-weight: 700; fill: var(--ink); letter-spacing: -0.02em; }
 .dwg-label--sm { font-size: 12px; font-weight: 600; fill: var(--ink-70); }
 .dwg-label--point { fill: var(--point-ink); }
 .dwg-note   { font-family: var(--font-sans); font-size: 11.5px; font-weight: 600; fill: var(--signal); }
 .dwg-tag    { font-family: var(--font-mono); font-size: 10.5px; fill: var(--ink-45); letter-spacing: .06em; }
-.dwg-obj    { fill: #C9D2E8; stroke: #9FAECF; stroke-width: 1; }
-.dwg-obj-2  { fill: #2E4560; }
+.dwg-obj    { fill: #E4CFC2; stroke: #C2A594; stroke-width: 1; }
+.dwg-obj-2  { fill: #4B342A; }
 .dwg-lead   { stroke: var(--signal); stroke-width: 1.4; fill: none; }
 
 /* ---------- 8. 座位圖 ---------- */
@@ -372,7 +383,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .wall-chip__n { font-size: 12px; font-weight: 700; letter-spacing: -0.02em; }
 .wall-chip__ip { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-45); }
-.wall-chip--door { background: var(--ink); color: #fff; border-color: var(--ink); }
+.wall-chip--door { background: var(--deep); color: #fff; border-color: var(--deep); }
 .wall-chip--door .wall-chip__n { color: #fff; }
 
 .map__wall { height: 3px; background: var(--ink); border-radius: 2px; margin-bottom: 20px; }
@@ -384,7 +395,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pod__note {
   grid-column: 1 / -1; margin-top: 10px; text-align: center;
   font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  background: #3A1E25; color: #fff; border-radius: var(--r-sm); padding: 5px;
+  background: var(--deep); color: #fff; border-radius: var(--r-sm); padding: 5px;
 }
 
 .desk-head {
@@ -405,7 +416,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .seat__meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
 .seat__ext {
   font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  background: var(--ink); color: #fff; border-radius: 4px; padding: 1px 6px;
+  background: var(--deep); color: #fff; border-radius: 4px; padding: 1px 6px;
 }
 .seat__desk {
   font-family: var(--font-mono); font-size: 11px;
@@ -422,7 +433,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .map__rooms { display: flex; flex-direction: column; gap: 10px; margin-left: 8px; }
 .room {
   width: 148px; border-radius: var(--r-md); padding: 16px 14px;
-  border: 1px solid #D3DBFF; background: var(--point-soft); min-height: 110px;
+  border: 1px solid var(--point-line); background: var(--point-soft); min-height: 110px;
   display: flex; flex-direction: column; justify-content: center; gap: 4px;
 }
 .room--office { background: var(--surface-2); border-color: var(--line); }
