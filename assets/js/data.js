@@ -22,7 +22,7 @@ const SITE = {
     centerShort: 'AIRIC',
     centerEn: 'AI & Robotics Innovation Center',
     updated: '2026.08',            // 顯示在頁尾的資料更新月份
-    adminExt: '169',               // 行政窗口分機
+    adminExt: '101',               // 行政窗口分機
   },
 
   /* ────────────────────────────────────────────────────────────
@@ -30,7 +30,7 @@ const SITE = {
      ──────────────────────────────────────────────────────────── */
   heroStats: [
     { value: '44', label: '成員席次' },
-    { value: '10', label: '專業分組' },
+    { value: '9', label: '專業分組' },
     { value: '3', label: '會議室' },
   ],
 
@@ -38,9 +38,9 @@ const SITE = {
      [3] 諮詢窗口（About 區塊）
      ──────────────────────────────────────────────────────────── */
   contacts: [
-    { name: '張詩聖', en: 'Director', role: '中心主任', desc: '中心整體策略與對外事務', ext: '168' },
-    { name: '行政組', en: 'Admin', role: '行政與會議室借用', desc: '請假、報帳、備品、門禁卡', ext: '169' },
-    { name: '資訊組', en: 'IT', role: '帳號／網路／設備', desc: '網路、帳號、事務機、NAS、電腦報修', ext: '109' },
+    { name: '張詩聖', en: 'Director', role: '中心主任', desc: '中心整體策略與對外事務' },
+    { name: '行政組', en: 'Admin', role: '行政與會議室借用', desc: '請假、報帳、備品、門禁卡' },
+    { name: '系統組', en: 'IT', role: '帳號／網路／設備', desc: '網路、帳號、NAS' },
   ],
 
   /* ────────────────────────────────────────────────────────────
@@ -53,8 +53,8 @@ const SITE = {
       group: '帳號與網路',
       icon: 'key-round',
       items: [
-        { id: 'acc-mail', title: '開通中心 Email 帳號', desc: '向資訊組領取預設密碼，首次登入請立刻改密碼。' },
-        { id: 'acc-ip', title: '登記座位電腦與網路', desc: '向資訊組登記你的座位與電腦，換位置要重新登記。' },
+        { id: 'acc-mail', title: '開通院內帳號' },
+        { id: 'acc-ip', title: '開通中心 NAS 帳號', desc: '向系統組領取帳號密碼。' },
         { id: 'acc-wifi', title: '連上中心 Wi-Fi', desc: '連線資訊與密碼向資訊組索取，勿外傳。' },
       ],
     },
@@ -62,8 +62,8 @@ const SITE = {
       group: '設備與空間',
       icon: 'laptop',
       items: [
-        { id: 'env-card', title: '領取門禁卡與座位鑰匙', desc: '向行政組簽收，離職或遺失需立即回報。' },
-        { id: 'env-print', title: '設定事務機列印', desc: '中心共 3 台：FUJI、BROTHER、事務機 2，向資訊組要驅動與連線設定。' },
+        { id: 'env-card', title: '門禁卡設定', desc: '給予行政組識別證，進行門禁卡設定。' },
+        { id: 'env-print', title: '設定事務機列印', desc: '中心共 2 台 ，參考SOP教學進行驅動與連線設定。' },
         { id: 'env-tour', title: '走一次中心空間', desc: '確認會議室、備品區、冰箱、逃生窗口位置。' },
       ],
     },
@@ -86,7 +86,7 @@ const SITE = {
       '有「非中心同仁」與會，一律優先使用「外部會議室」。',
       '會議室借用狀況請詢問行政組。',
       '使用完畢：清除白板、資材歸位、垃圾帶走，門保持開啟。',
-      '外部會議室鑰匙放在 BROTHER 事務機上方。',
+      '外部會議室鑰匙放在正門門口旁。',
     ],
     supplies: [
       '冰箱內的東西請貼標籤，註明「名字 / 日期」。',
@@ -107,7 +107,7 @@ const SITE = {
        label 是顯示出來的組名，color 是座位卡左側色條與圖例色塊。
        ※ 括號內是原簡報圖例的色碼，部分因為太淺、細線上看不清楚，
          我在不改變辨識度的前提下加深了一點。 */
-    doctor: { label: '高醫師團隊', color: '#9C7A1E' },   // 原座位表深金色
+    doctor: { label: '核醫', color: '#9C7A1E' },   // 原座位表深金色
     law:    { label: '法規',       color: '#E0A8C0' },   // 圖例 #EAD1DC（另有一格為 #00FFFF）
     nlp:    { label: 'NLP',        color: '#B6D7A8' },   // 圖例 #B6D7A8
     image:  { label: '影像',       color: '#8E7CC3' },   // 圖例 #8E7CC3
@@ -115,7 +115,7 @@ const SITE = {
     admin:  { label: '行政',       color: '#6D9EEB' },   // 圖例 #6D9EEB
     mkt:    { label: '行銷',       color: '#E06666' },   // 圖例 #E06666
     signal: { label: '訊號',       color: '#F6B26B' },   // 圖例 #F6B26B
-    mis:    { label: '醫資組',     color: '#93AEDD' },   // 圖例 #B4C7E7
+    mis:    { label: '醫資',     color: '#93AEDD' },   // 圖例 #B4C7E7
     pm:     { label: 'PM',         color: '#E3C400' },   // 圖例 #FFFF00
   },
 
@@ -254,7 +254,7 @@ const SITE = {
             { name: '林亭妤', en: 'Tianna', ext: '108', group: 'system' },
             { name: '蔡欣樺', en: 'Wendy', ext: '110', group: 'system' },
             { name: '朱育德', en: 'Nick', ext: '116', group: 'system' },
-            { name: '王韋竣', en: 'Welt', ext: '118', group: 'mis' },
+            { name: '王韋竣', en: 'Welt', ext: '118', group: 'pm' },
           ],
         },
       ],
@@ -321,7 +321,7 @@ const SITE = {
       body: [
         '【醫院聘任同仁】使用院內差勤管理系統；請假、忘記打卡依醫院人資處規範線上簽核。',
         '【計畫聘任同仁】使用計畫專用線上差勤系統；請假需經計畫主持人（PI）簽核，工時日誌定期匯出備查。',
-        '不確定自己是哪一種，請洽行政組（分機 169）。',
+        '不確定自己是哪一種，請洽行政組（分機 101）。',
       ],
     },
     {
