@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIRIC 內容加密工具</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body.locked > *:not(#gate) { display: revert !important; }
+  .tool { max-width: 680px; margin: 0 auto; padding: 56px 22px 80px; }
+  .tool h1 { font-size: 28px; font-weight: 800; letter-spacing: -.04em; margin: 0 0 10px; }
+  .tool .sub { color: var(--ink-45); font-size: 14px; margin: 0 0 34px; }
+  .step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; margin-bottom: 12px; }
+  .step h2 { font-size: 15px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 6px; display: flex; gap: 10px; align-items: baseline; }
+  .step h2 em { font-family: var(--font-mono); font-size: 11px; font-style: normal; color: var(--point); }
+  .step p { font-size: 13px; color: var(--ink-45); margin: 0 0 16px; line-height: 1.75; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .row input { flex: 1; min-width: 200px; font: inherit; font-size: 15px; padding: 12px 15px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--surface-2); }
+  .row input:focus { outline: none; border-color: var(--point); box-shadow: 0 0 0 3px var(--point-soft); }
+  .go { border: 0; background: var(--ink); color: #fff; padding: 12px 24px; border-radius: var(--r-md); font-size: 14px; font-weight: 600; }
+  .go:hover:not(:disabled) { background: var(--point); }
+  .go:disabled { opacity: .45; }
+  .out { margin-top: 16px; font-size: 13px; }
+  .ok { color: #1B7F4B; }
+  .bad { color: var(--signal); }
+  .load { font-family: var(--font-mono); font-size: 12px; color: var(--ink-45); }
+</style>
+</head>
+<body>
+<div class="tool">
+  <h1>內容加密工具</h1>
+  <p class="sub">改完 <code class="mono">assets/js/data.js</code> 之後，用這個頁面把它加密成網站實際讀取的 <code class="mono">data.enc.js</code>。<br>整個過程都在你的瀏覽器裡完成，不會上傳任何東西。</p>
+
+  <div class="step">
+    <h2><em>01</em>確認內容已讀取</h2>
+    <p>這頁會自動載入同資料夾的 <code class="mono">assets/js/data.js</code>。</p>
+    <div class="load" id="status">讀取中…</div>
+  </div>
+
+  <div class="step">
+    <h2><em>02</em>設定密碼</h2>
+    <p>同仁進入網站時要輸入的密碼。想換密碼，在這裡打新的即可 —— 產生新檔案後，舊密碼就失效了。</p>
+    <div class="row">
+      <input id="pw" type="text" value="airic" placeholder="密碼">
+      <button class="go" id="run">產生加密檔</button>
+    </div>
+    <div class="out" id="out"></div>
+  </div>
+
+  <div class="step">
+    <h2><em>03</em>覆蓋檔案</h2>
+    <p>把下載到的 <code class="mono">data.enc.js</code> 放回 <code class="mono">assets/js/</code> 覆蓋舊的，然後上傳到 GitHub。<br>重新整理 <code class="mono">index.html</code> 就能用新密碼進去了。</p>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const ITER = 250000;
+
+  if (typeof SITE === 'undefined') {
+    $('#status').innerHTML = '<span class="bad">讀不到 data.js —— 可能是檔案有語法錯誤（少逗號、少括號）。請按 F12 看 Console 的紅字。</span>';
+    $('#run').disabled = true;
+  } else {
+    let seats = 0;
+    SITE.pods.forEach(p => {
+      (p.front || []).forEach(s => { if (!s.empty) seats++; });
+      p.columns.forEach(c => c.seats.forEach(s => { if (!s.empty) seats++; }));
+    });
+    $('#status').innerHTML = `<span class="ok">✓ 已讀取：${seats} 位同仁、${SITE.rules.length} 條規範、${SITE.systems.length} 個系統連結</span>`;
+  }
+
+  $('#run').addEventListener('click', async () => {
+    const pw = $('#pw').value;
+    if (!pw) { $('#out').innerHTML = '<span class="bad">請先輸入密碼。</span>'; return; }
+
+    $('#run').disabled = true;
+    $('#out').innerHTML = '<span class="load">加密中…</span>';
+    await new Promise(r => setTimeout(r, 30));
+
+    try {
+      const enc = new TextEncoder();
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv   = crypto.getRandomValues(new Uint8Array(12));
+      const base = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveKey']);
+      const key  = await crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt, iterations: ITER, hash: 'SHA-256' },
+        base, { name: 'AES-GCM', length: 256 }, false, ['encrypt']
+      );
+      const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(JSON.stringify(SITE)));
+
+      const file = `/* ==========================================================================
+   AIRIC Portal — 加密後的網站內容
+   --------------------------------------------------------------------------
+   ★ 這個檔案由 build.html 自動產生，不要手動編輯。
+   產生時間：${new Date().toLocaleString('zh-TW')}
+   ========================================================================== */
+
+const ENC_DATA = {
+  v: 1,
+  iter: ${ITER},
+  salt: '${b64(salt)}',
+  iv:   '${b64(iv)}',
+  ct:   '${b64(ct)}',
+};
+`;
+      const url = URL.createObjectURL(new Blob([file], { type: 'text/javascript' }));
+      const a = document.createElement('a');
+      a.href = url; a.download = 'data.enc.js'; a.click();
+      URL.revokeObjectURL(url);
+
+      $('#out').innerHTML = '<span class="ok">✓ 已產生並下載 data.enc.js —— 密碼為「' + pw.replace(/[&<>]/g, '') + '」</span>';
+    } catch (e) {
+      $('#out').innerHTML = '<span class="bad">加密失敗：' + e.message + '</span>';
+    }
+    $('#run').disabled = false;
+  });
+})();
+</script>
+</body>
+</html>
