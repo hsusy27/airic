@@ -393,11 +393,11 @@ const SITE = {
         ★ 把 url 換成你們真正的網址；沒有網址就先留 '#' ★
      ──────────────────────────────────────────────────────────── */
   systems: [
-    { name: '差勤與請假系統', desc: '打卡、請假、加班申請', url: '#', icon: 'calendar-clock' },
-    { name: '電子公文系統', desc: '線上簽核與公文陳核', url: '#', icon: 'file-check-2' },
+    { name: '計畫同仁假勤系統', desc: '打卡、請假、加班申請', url: 'http://10.65.51.163:3000/#', icon: 'calendar-clock' },
+    { name: '設備借用系統', desc: '硬體被借用及個人資產管理', url: 'http://10.65.51.163:3000/#', icon: 'file-check-2' },
     { name: '中心共用雲端硬碟', desc: '簡報範本、Logo、資料夾', url: '#', icon: 'folder-open' },
     { name: '會議室預約', desc: '第一會議室／外部會議室', url: '#', icon: 'door-open' },
     { name: 'IT 線上報修', desc: '電腦、網路、事務機故障', url: '#', icon: 'wrench' },
-    { name: '中心 NAS', desc: '共用檔案空間，路徑洽資訊組', url: '#', icon: 'hard-drive' },
+    { name: '中心 NAS', desc: '共用檔案空間，路徑洽系統組', url: '#', icon: 'hard-drive' },
   ],
 };
