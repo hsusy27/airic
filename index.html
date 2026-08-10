@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=2026081002">
 </head>
 <body class="locked">
 
@@ -170,8 +170,8 @@
   <section class="wrap section reveal" id="floor">
     <div class="sec-head">
       <span class="sec-head__label">Floor &amp; Facilities</span>
-      <h2 class="sec-head__title">空間、鑰匙、備品放哪裡</h2>
-      <p class="sec-head__desc">兩張圖對應中心公告：上圖是整層平面與會議室位置，下圖是茶水區與事務機周邊的物品擺放。</p>
+      <h2 class="sec-head__title">空間、鑰匙、備品與電話</h2>
+      <p class="sec-head__desc">對應中心公告：整層平面與會議室位置、茶水區與事務機周邊的物品擺放，以及桌上電話怎麼撥。</p>
     </div>
 
     <div class="plan-grid">
@@ -277,14 +277,14 @@
         <span>PLAN 02</span>
       </figcaption>
       <div class="figure__body">
-        <svg viewBox="0 0 1000 380" role="img" aria-label="走道立面圖：冰箱、微波爐、置物櫃、門、事務機與冷氣調節處的位置">
+        <svg viewBox="0 0 1000 380" role="img" aria-label="走道立面圖：冰箱、微波爐、柱子、門、事務機與冷氣調節處的位置">
           <!-- 地面線 -->
           <line x1="20" y1="300" x2="980" y2="300" class="dwg-wall"/>
           <!-- 右側牆與會議室 -->
-          <line x1="944" y1="180" x2="944" y2="360" class="dwg-wall"/>
-          <text x="963" y="222" text-anchor="middle" class="dwg-label--sm dwg-label">會</text>
-          <text x="963" y="244" text-anchor="middle" class="dwg-label--sm dwg-label">議</text>
-          <text x="963" y="266" text-anchor="middle" class="dwg-label--sm dwg-label">室</text>
+          <line x1="946" y1="180" x2="946" y2="360" class="dwg-wall"/>
+          <text x="965" y="222" text-anchor="middle" class="dwg-label--sm dwg-label">會</text>
+          <text x="965" y="244" text-anchor="middle" class="dwg-label--sm dwg-label">議</text>
+          <text x="965" y="266" text-anchor="middle" class="dwg-label--sm dwg-label">室</text>
 
           <!-- 冰箱 -->
           <g>
@@ -298,7 +298,7 @@
           <text x="99" y="66" text-anchor="middle" class="dwg-note">冰箱內請貼標籤</text>
           <text x="99" y="84" text-anchor="middle" class="dwg-note" style="fill:var(--ink-45);font-weight:500">註明 名字／日期</text>
 
-          <!-- 微波爐 + 櫃 -->
+          <!-- 微波爐 + 收納櫃 -->
           <g>
             <rect x="170" y="238" width="86" height="62" rx="4" fill="#6D5A50" stroke="#503F37"/>
             <line x1="213" y1="238" x2="213" y2="300" stroke="#503F37"/>
@@ -309,9 +309,9 @@
           <path d="M213 140 L213 192" class="dwg-lead"/><path d="M208 184 L213 196 L218 184 Z" class="dwg-key"/>
           <text x="213" y="128" text-anchor="middle" class="dwg-note">用完請蓋起來</text>
 
-          <!-- 高櫃 1 -->
-          <rect x="288" y="164" width="40" height="136" rx="4" fill="#4B342A"/>
-          <text x="308" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">置物櫃</text>
+          <!-- 柱子 1 -->
+          <rect x="288" y="164" width="40" height="136" rx="3" fill="#4B342A"/>
+          <text x="308" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">柱子</text>
 
           <!-- 門 1 -->
           <rect x="374" y="252" width="46" height="34" rx="5" fill="#fff" stroke="#EDE0D8"/>
@@ -329,31 +329,103 @@
           <text x="498" y="100" text-anchor="middle" class="dwg-note">墨水及 A4 紙</text>
           <text x="498" y="118" text-anchor="middle" class="dwg-note" style="fill:var(--ink-45);font-weight:500">在正對面桌子上</text>
 
-          <!-- 高櫃 2 -->
-          <rect x="580" y="164" width="40" height="136" rx="4" fill="#4B342A"/>
-          <text x="600" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">置物櫃</text>
+          <!-- 柱子 2 -->
+          <rect x="580" y="164" width="40" height="136" rx="3" fill="#4B342A"/>
+          <text x="600" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">柱子</text>
 
           <!-- 門 2 -->
           <rect x="666" y="252" width="46" height="34" rx="5" fill="#fff" stroke="#EDE0D8"/>
           <text x="689" y="276" text-anchor="middle" class="dwg-label--sm dwg-label">門</text>
 
-          <!-- 事務機 2 + 冷氣控制 -->
+          <!-- 冷氣調節處（掛在牆上，不落地） -->
           <g>
-            <rect x="754" y="222" width="72" height="78" rx="5" fill="#F8F1EC" stroke="#C9AC99"/>
-            <rect x="762" y="236" width="56" height="14" rx="2" fill="#EE8B63"/>
-            <rect x="762" y="262" width="56" height="30" rx="3" fill="#fff" stroke="#E4CFC2"/>
-            <rect x="758" y="208" width="64" height="14" rx="3" class="dwg-obj"/>
-            <rect x="772" y="182" width="36" height="22" rx="4" fill="#4B342A"/>
-            <text x="790" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">事務機</text>
+            <rect x="744" y="196" width="40" height="26" rx="4" fill="#4B342A"/>
+            <rect x="754" y="204" width="20" height="10" rx="2" fill="#F8F1EC"/>
           </g>
-          <path d="M790 140 L790 174" class="dwg-lead"/><path d="M785 166 L790 178 L795 166 Z" class="dwg-key"/>
-          <text x="790" y="128" text-anchor="middle" class="dwg-note">中心冷氣調節處</text>
+          <path d="M764 152 L764 186" class="dwg-lead"/><path d="M759 178 L764 190 L769 178 Z" class="dwg-key"/>
+          <text x="764" y="140" text-anchor="middle" class="dwg-note">中心冷氣調節處</text>
+
+          <!-- 事務機 2（靠近會議室） -->
+          <g>
+            <rect x="846" y="222" width="72" height="78" rx="5" fill="#F8F1EC" stroke="#C9AC99"/>
+            <rect x="854" y="236" width="56" height="14" rx="2" fill="#EE8B63"/>
+            <rect x="854" y="262" width="56" height="30" rx="3" fill="#fff" stroke="#E4CFC2"/>
+            <rect x="850" y="208" width="64" height="14" rx="3" class="dwg-obj"/>
+            <text x="882" y="322" text-anchor="middle" class="dwg-label--sm dwg-label">事務機</text>
+          </g>
 
           <!-- 底部提醒 -->
           <text x="20" y="356" class="dwg-note" style="font-size:12.5px">請保持整潔、垃圾自行丟棄；備品快用完請先告知，申請需要時間。不會使用或需要替換，直接來問即可。</text>
         </svg>
       </div>
     </figure>
+
+    <!-- ── 桌上電話撥號 ── -->
+    <div class="phone-grid">
+      <figure class="figure" style="margin:0">
+        <figcaption class="figure__cap">
+          <h3>桌上電話使用方式</h3>
+          <span>PHONE</span>
+        </figcaption>
+        <div class="figure__body">
+          <svg viewBox="0 0 460 330" role="img" aria-label="桌上電話示意圖：左側為數字鍵盤，右側為線路鍵">
+            <!-- 話筒 -->
+            <g>
+              <rect x="42" y="52" width="52" height="186" rx="26" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
+              <rect x="52" y="86" width="32" height="118" rx="4" fill="none" class="dwg-thin"/>
+              <path d="M56 100h24M56 112h24M56 124h24M56 136h24" class="dwg-thin"/>
+              <path d="M68 238 q-8 34 22 42 t44 6" class="dwg-thin"/>
+            </g>
+
+            <!-- 機身 -->
+            <rect x="118" y="86" width="308" height="196" rx="14" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
+            <!-- 顯示模組 -->
+            <rect x="196" y="46" width="176" height="52" rx="10" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
+            <rect x="212" y="60" width="144" height="24" rx="4" fill="var(--surface-2)" class="dwg-thin"/>
+            <text x="284" y="77" text-anchor="middle" class="dwg-tag">CID</text>
+
+            <!-- 數字鍵盤（藍色區） -->
+            <rect x="140" y="124" width="122" height="142" rx="8" fill="#DCE6F4"/>
+            <g fill="#fff" stroke="#9DB4D6" stroke-width="1">
+              <rect x="152" y="134" width="30" height="22" rx="4"/><rect x="188" y="134" width="30" height="22" rx="4"/><rect x="224" y="134" width="30" height="22" rx="4"/>
+              <rect x="152" y="164" width="30" height="22" rx="4"/><rect x="188" y="164" width="30" height="22" rx="4"/><rect x="224" y="164" width="30" height="22" rx="4"/>
+              <rect x="152" y="194" width="30" height="22" rx="4"/><rect x="188" y="194" width="30" height="22" rx="4"/><rect x="224" y="194" width="30" height="22" rx="4"/>
+              <rect x="152" y="224" width="30" height="22" rx="4"/><rect x="188" y="224" width="30" height="22" rx="4"/><rect x="224" y="224" width="30" height="22" rx="4"/>
+            </g>
+
+            <!-- 線路鍵（橘色區） -->
+            <rect x="278" y="112" width="128" height="158" rx="8" fill="var(--point-soft)"/>
+            <g fill="#fff" stroke="#E9A98C" stroke-width="1">
+              <rect x="290" y="122" width="104" height="15" rx="3"/>
+              <rect x="290" y="143" width="104" height="15" rx="3"/>
+              <rect x="290" y="164" width="104" height="15" rx="3"/>
+              <rect x="290" y="185" width="104" height="15" rx="3"/>
+              <rect x="290" y="206" width="104" height="15" rx="3"/>
+              <rect x="290" y="227" width="104" height="15" rx="3"/>
+              <rect x="290" y="248" width="104" height="15" rx="3"/>
+            </g>
+
+            <!-- 標註 -->
+            <path d="M201 286 L201 300 L150 300" class="dwg-thin" stroke="#7B96C4"/>
+            <text x="146" y="304" text-anchor="end" class="dwg-label--sm dwg-label" style="fill:#3D5E93">數字鍵盤</text>
+            <path d="M342 286 L342 300 L392 300" class="dwg-thin" stroke="#D98A66"/>
+            <text x="396" y="304" class="dwg-label--sm dwg-label dwg-label--point">線路鍵 3–15</text>
+          </svg>
+        </div>
+      </figure>
+
+      <div class="dial">
+        <div class="dial__row dial__row--hi">
+          <span class="dial__k">中心內部</span>
+          <span class="dial__v" id="dial-inside"></span>
+        </div>
+        <div class="dial__row">
+          <span class="dial__k">中心以外</span>
+          <span class="dial__v" id="dial-outside"></span>
+        </div>
+        <div id="dial-rules"></div>
+      </div>
+    </div>
   </section>
 
   <!-- ══════════════════ 座位圖 ══════════════════ -->
@@ -422,6 +494,7 @@
       <div class="foot__m"><span data-bind="centerEn">AI &amp; Robotics Innovation Center</span></div>
     </div>
     <div class="foot__m" style="text-align:right">
+      <span class="mono" style="color:var(--ink-25)">build 2026081002 · coral</span><br>
       資料更新：<span class="mono" data-bind="updated">2026.08</span><br>
       內容有誤或需新增，請聯繫行政組（分機 <span data-bind="adminExt">169</span>）
     </div>
@@ -443,8 +516,8 @@
 <div class="toast" id="toast"></div>
 
 <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
-<script src="assets/js/data.enc.js"></script>
-<script src="assets/js/gate.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/data.enc.js?v=2026081002"></script>
+<script src="assets/js/gate.js?v=2026081002"></script>
+<script src="assets/js/app.js?v=2026081002"></script>
 </body>
 </html>

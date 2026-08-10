@@ -649,3 +649,34 @@ body.locked { overflow: hidden; }
   .gate__field { flex-wrap: wrap; }
   .gate__field button { width: 100%; padding: 13px; }
 }
+
+/* ---------- 17. 桌上電話撥號 ---------- */
+.phone-grid {
+  display: grid; gap: 14px; grid-template-columns: 1fr 1fr;
+  align-items: stretch; margin-top: 14px;
+}
+
+.dial {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-lg); padding: 8px 24px 20px;
+}
+.dial__row {
+  display: flex; gap: 16px; align-items: baseline;
+  padding: 15px 0; border-bottom: 1px solid var(--line-soft);
+}
+.dial__row:last-child { border-bottom: 0; }
+.dial__k {
+  flex: none; width: 96px; font-size: 13px; font-weight: 700;
+  letter-spacing: -0.02em; color: var(--ink);
+}
+.dial__v { font-size: 13.5px; color: var(--ink-70); }
+.dial__v b { font-size: 15px; font-weight: 600; color: var(--ink); letter-spacing: .01em; }
+.dial__v em {
+  font-style: normal; font-size: 11.5px; color: var(--ink-45);
+  border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; margin-left: 8px;
+}
+.dial__row--hi { border-bottom-color: var(--line); }
+.dial__row--hi .dial__k { color: var(--point-ink); }
+
+@media (max-width: 1020px) { .phone-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px)  { .dial { padding: 4px 18px 16px; } .dial__k { width: 74px; } }

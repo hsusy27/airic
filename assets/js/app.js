@@ -106,6 +106,19 @@
     $('#note-supplies').innerHTML = li(SITE.floorNotes.supplies);
   }
 
+  /* ---------- 4.5 桌上電話 ---------- */
+  function renderPhone() {
+    const ph = SITE.phone;
+    if (!ph) return;
+    $('#dial-inside').textContent  = ph.inside;
+    $('#dial-outside').textContent = ph.outside;
+    $('#dial-rules').innerHTML = ph.rules.map(r => `
+      <div class="dial__row">
+        <span class="dial__k">${esc(r.label)}</span>
+        <span class="dial__v"><b class="mono">${esc(r.value)}</b>${r.note ? `<em>${esc(r.note)}</em>` : ''}</span>
+      </div>`).join('');
+  }
+
   /* ---------- 5. 座位圖 ---------- */
   function seatHTML(seat) {
     if (seat.empty) {
@@ -290,6 +303,9 @@
       (p.front || []).forEach(push);
       p.columns.forEach(c => c.seats.forEach(push));
     });
+    if (SITE.phone) SITE.phone.rules.forEach(r => idx.push({
+      t: '打給' + r.label, d: r.value + (r.note ? '（' + r.note + '）' : ''), k: '撥號', href: '#floor',
+    }));
     SITE.rooms.forEach(r => idx.push({ t: r.name, d: `分機 ${r.ext}｜${(r.ip || [])[0] || ''}`, k: '空間', href: '#seatmap' }));
     return idx;
   }
@@ -350,6 +366,7 @@
     renderContacts();
     renderChecklist();
     renderFloorNotes();
+    renderPhone();
     renderMap();
     bindSeatSearch();
     applySeatFilter(null);
