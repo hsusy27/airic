@@ -230,7 +230,7 @@
     });
   }
 
-  /* ---------- 6. 規範庫 ---------- */
+/* ---------- 6. 規範庫 ---------- */
   function renderRules(cat = 'all') {
     const list = SITE.rules.filter(r => cat === 'all' || r.cat === cat);
     $('#rule-list').innerHTML = list.map((r, i) => `
@@ -243,7 +243,10 @@
           </span>
           <span class="rule__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span>
         </button>
-        <div class="rule__body"><ol>${r.body.map(b => `<li>${esc(b)}</li>`).join('')}</ol></div>
+        <div class="rule__body">
+          ${r.img ? `<div style="margin-bottom:14px;"><img src="${esc(r.img)}" alt="${esc(r.title)}" style="max-width:100%;height:auto;border-radius:8px;border:1px solid var(--line);"></div>` : ''}
+          <ol>${r.body.map(b => `<li>${esc(b)}</li>`).join('')}</ol>
+        </div>
       </div>`).join('');
 
     $$('#rule-list .rule__btn').forEach(btn => btn.addEventListener('click', () => {
