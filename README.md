@@ -99,11 +99,14 @@ airic-site/
 └── assets/
     ├── css/
     │   └── style.css        所有樣式
-    └── js/
+    ├── js/
         ├── data.js      ★  網站的全部內容都在這裡（明文，不上傳）
         ├── data.enc.js  ↑  上面那個檔加密後的版本（上傳這個）
         ├── gate.js         密碼鎖
         └── app.js          程式邏輯（不用改）
+   └── img/
+        ├── rule-attendance.png
+        └── rule-meeting.png
 ```
 
 **九成的維護只需要改 `assets/js/data.js`，然後用 `build.html` 重新加密。**
