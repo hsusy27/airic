@@ -683,28 +683,43 @@ body.locked { overflow: hidden; }
 .phone-panel__desc { margin: 0; font-size: 12.5px; color: var(--ink-45); line-height: 1.6; }
 
 .phone-panel {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr); /* 🟢 改成 8 欄，16 個按鈕就會自動分成 2 排 */
-  gap: 6px;                               /* 稍微縮小間距，畫面更精緻 */
+  display: grid !important;
+  grid-template-columns: repeat(8, 1fr) !important; /* 強制分成 2 排（每排 8 個） */
+  gap: 6px !important;
+  width: 100% !important;
+  max-width: 360px !important;                       /* 控制按鈕區整體寬度，防止太寬或太窄 */
+  margin: 12px auto 0 !important;                     /* 區塊置中 */
 }
+
 .phone-key {
-  border: 1px solid var(--line); border-radius: var(--r-sm);
+  border: 1px solid var(--line); 
+  border-radius: var(--r-sm);
   background: var(--surface); 
-  padding: 8px 0;        /* 👈 12px 改成 8px */
+  padding: 6px 0 !important;                         /* 縮小上下內邊距 */
   text-align: center;
   transition: .15s ease;
-  min-width: 0;          /* 👈 新增這行 */
+  min-width: 0 !important;                          /* 強制防止雙位數撐大按鈕 */
+  width: 100% !important;
 }
+
 .phone-key:hover:not(:disabled) {
   border-color: var(--ink-25); transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(16,16,19,.07);
 }
-.phone-key__n { font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--ink-70); }
+
+.phone-key__n { 
+  font-family: var(--font-mono); 
+  font-size: 13px !important;                        /* 字體大小微調為 13px */
+  font-weight: 700; 
+  color: var(--ink-70); 
+}
+
 .phone-key.is-on {
   border-color: var(--point); background: var(--point-soft);
   box-shadow: 0 0 0 3px var(--point-soft);
 }
 .phone-key.is-on .phone-key__n { color: var(--point-ink); }
+
 .phone-key--empty, .phone-key:disabled {
   background: repeating-linear-gradient(135deg, #FAFAF9 0 6px, #F4F4F2 6px 12px);
   cursor: default;
@@ -728,7 +743,7 @@ body.locked { overflow: hidden; }
 @media (max-width: 1020px) { .phone-grid { grid-template-columns: 1fr; } }
 @media (max-width: 760px)  {
   .dial { padding: 4px 18px 16px; } .dial__k { width: 74px; }
-  .phone-panel { grid-template-columns: repeat(4, 1fr); }
+  .phone-panel { grid-template-columns: repeat(4, 1fr) !important; } /* 手機版每排 4 個 */
 }
 /* ── 機身圖片容器與定位設定 ── */
 .phone-mock {
