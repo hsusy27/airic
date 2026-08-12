@@ -445,8 +445,8 @@ const SITE = {
     { name: '計畫同仁假勤系統', desc: '打卡、請假、加班申請', url: 'http://10.65.51.163:3000/#', icon: 'calendar-clock' },
     { name: '設備借用系統', desc: '硬體被借用及個人資產管理', url: 'http://10.65.51.163:3000/#', icon: 'file-check-2' },
     { name: '中心共用雲端硬碟', desc: '簡報範本、Logo、資料夾', url: '#', icon: 'folder-open' },
-    { name: '會議室預約', desc: '第一會議室／外部會議室', url: '#', icon: 'door-open' },
-    { name: 'IT 線上報修', desc: '電腦、網路、事務機故障', url: '#', icon: 'wrench' },
+    { name: 'AIRIC 對外官網', desc: '官網', url: '#', icon: 'door-open' },
+    { name: 'AIRIC Linkedin', desc: '商務社群網站', url: '#', icon: 'wrench' },
     { name: '中心 NAS', desc: '共用檔案空間，路徑洽系統組', url: '#', icon: 'hard-drive' },
   ],
 };
