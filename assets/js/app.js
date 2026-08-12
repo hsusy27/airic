@@ -117,6 +117,52 @@
         <span class="dial__k">${esc(r.label)}</span>
         <span class="dial__v"><b class="mono">${esc(r.value)}</b>${r.note ? `<em>${esc(r.note)}</em>` : ''}</span>
       </div>`).join('');
+
+    renderPhonePanel(ph.panel || []);
+  }
+
+  /* 電話分線面板：點按鍵 → 顯示對應分機（取代原本手繪的電話示意圖） */
+  function renderPhonePanel(panel) {
+    const panelEl = $('#phone-panel');
+    const readout = $('#phone-panel-readout');
+    if (!panelEl) return;
+
+    if (!panel.length) {
+      panelEl.innerHTML = '<p class="map-empty" style="padding:16px">尚未設定分線面板（data.js 的 phone.panel）。</p>';
+      return;
+    }
+
+    panelEl.innerHTML = panel.map(k => {
+      if (k.empty) {
+        return `<button type="button" class="phone-key phone-key--empty" disabled>
+          <span class="phone-key__n">${esc(k.key)}</span>
+        </button>`;
+      }
+      return `<button type="button" class="phone-key"
+                data-key="${esc(k.key)}" data-ext="${esc(k.ext)}" data-outside="${k.outside ? '1' : ''}">
+        <span class="phone-key__n">${esc(k.key)}</span>
+      </button>`;
+    }).join('');
+
+    const resetReadout = () => {
+      readout.innerHTML = '<span class="phone-panel__hint">尚未選擇按鍵</span>';
+    };
+
+    $$('.phone-key', panelEl).forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wasOn = btn.classList.contains('is-on');
+        $$('.phone-key', panelEl).forEach(b => b.classList.remove('is-on'));
+        if (wasOn) { resetReadout(); return; }
+
+        btn.classList.add('is-on');
+        readout.innerHTML = `
+          <span class="phone-panel__key mono">第 ${esc(btn.dataset.key)} 鍵</span>
+          <span class="phone-panel__arrow">→</span>
+          <span class="phone-panel__ext mono">${esc(btn.dataset.ext)}</span>
+          ${btn.dataset.outside === '1' ? '<span class="phone-panel__tag">外線</span>' : ''}
+        `;
+      });
+    });
   }
 
   /* ---------- 5. 座位圖 ---------- */
