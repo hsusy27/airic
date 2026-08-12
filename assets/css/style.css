@@ -678,5 +678,50 @@ body.locked { overflow: hidden; }
 .dial__row--hi { border-bottom-color: var(--line); }
 .dial__row--hi .dial__k { color: var(--point-ink); }
 
+/* 電話分線面板 */
+.phone-panel-body { display: flex; flex-direction: column; gap: 14px; }
+.phone-panel__desc { margin: 0; font-size: 12.5px; color: var(--ink-45); line-height: 1.6; }
+
+.phone-panel {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.phone-key {
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  background: var(--surface); padding: 12px 0; text-align: center;
+  transition: .15s ease;
+}
+.phone-key:hover:not(:disabled) {
+  border-color: var(--ink-25); transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(16,16,19,.07);
+}
+.phone-key__n { font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--ink-70); }
+.phone-key.is-on {
+  border-color: var(--point); background: var(--point-soft);
+  box-shadow: 0 0 0 3px var(--point-soft);
+}
+.phone-key.is-on .phone-key__n { color: var(--point-ink); }
+.phone-key--empty, .phone-key:disabled {
+  background: repeating-linear-gradient(135deg, #FAFAF9 0 6px, #F4F4F2 6px 12px);
+  cursor: default;
+}
+.phone-key--empty .phone-key__n { color: var(--ink-25); }
+
+.phone-panel__readout {
+  min-height: 44px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 16px; border: 1px dashed var(--line); border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+.phone-panel__hint { font-size: 12.5px; color: var(--ink-45); }
+.phone-panel__key { font-size: 13px; font-weight: 700; color: var(--ink); }
+.phone-panel__arrow { color: var(--ink-25); }
+.phone-panel__ext { font-size: 18px; font-weight: 700; color: var(--point-ink); letter-spacing: .01em; }
+.phone-panel__tag {
+  font-size: 11px; color: var(--ink-45); border: 1px solid var(--line);
+  border-radius: 99px; padding: 1px 8px;
+}
+
 @media (max-width: 1020px) { .phone-grid { grid-template-columns: 1fr; } }
-@media (max-width: 760px)  { .dial { padding: 4px 18px 16px; } .dial__k { width: 74px; } }
+@media (max-width: 760px)  {
+  .dial { padding: 4px 18px 16px; } .dial__k { width: 74px; }
+  .phone-panel { grid-template-columns: repeat(3, 1fr); }
+}
