@@ -366,53 +366,15 @@
     <div class="phone-grid" id="phone">
       <figure class="figure" style="margin:0">
         <figcaption class="figure__cap">
-          <h3>桌上電話使用方式</h3>
-          <span>PHONE</span>
+          <h3>電話分線面板</h3>
+          <span>PANEL</span>
         </figcaption>
-        <div class="figure__body">
-          <svg viewBox="0 0 460 330" role="img" aria-label="桌上電話示意圖：左側為數字鍵盤，右側為線路鍵">
-            <!-- 話筒 -->
-            <g>
-              <rect x="42" y="52" width="52" height="186" rx="26" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
-              <rect x="52" y="86" width="32" height="118" rx="4" fill="none" class="dwg-thin"/>
-              <path d="M56 100h24M56 112h24M56 124h24M56 136h24" class="dwg-thin"/>
-              <path d="M68 238 q-8 34 22 42 t44 6" class="dwg-thin"/>
-            </g>
-
-            <!-- 機身 -->
-            <rect x="118" y="86" width="308" height="196" rx="14" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
-            <!-- 顯示模組 -->
-            <rect x="196" y="46" width="176" height="52" rx="10" fill="#fff" class="dwg-thin" stroke-width="1.8"/>
-            <rect x="212" y="60" width="144" height="24" rx="4" fill="var(--surface-2)" class="dwg-thin"/>
-            <text x="284" y="77" text-anchor="middle" class="dwg-tag">CID</text>
-
-            <!-- 數字鍵盤（藍色區） -->
-            <rect x="140" y="124" width="122" height="142" rx="8" fill="var(--surface-2)" stroke="var(--line)"/>
-            <g fill="#fff" stroke="#C9AC99" stroke-width="1">
-              <rect x="152" y="134" width="30" height="22" rx="4"/><rect x="188" y="134" width="30" height="22" rx="4"/><rect x="224" y="134" width="30" height="22" rx="4"/>
-              <rect x="152" y="164" width="30" height="22" rx="4"/><rect x="188" y="164" width="30" height="22" rx="4"/><rect x="224" y="164" width="30" height="22" rx="4"/>
-              <rect x="152" y="194" width="30" height="22" rx="4"/><rect x="188" y="194" width="30" height="22" rx="4"/><rect x="224" y="194" width="30" height="22" rx="4"/>
-              <rect x="152" y="224" width="30" height="22" rx="4"/><rect x="188" y="224" width="30" height="22" rx="4"/><rect x="224" y="224" width="30" height="22" rx="4"/>
-            </g>
-
-            <!-- 線路鍵（橘色區） -->
-            <rect x="278" y="112" width="128" height="158" rx="8" fill="var(--point-soft)"/>
-            <g fill="#fff" stroke="var(--point-line)" stroke-width="1">
-              <rect x="290" y="122" width="104" height="15" rx="3"/>
-              <rect x="290" y="143" width="104" height="15" rx="3"/>
-              <rect x="290" y="164" width="104" height="15" rx="3"/>
-              <rect x="290" y="185" width="104" height="15" rx="3"/>
-              <rect x="290" y="206" width="104" height="15" rx="3"/>
-              <rect x="290" y="227" width="104" height="15" rx="3"/>
-              <rect x="290" y="248" width="104" height="15" rx="3"/>
-            </g>
-
-            <!-- 標註 -->
-            <path d="M201 286 L201 300 L150 300" class="dwg-thin" stroke="var(--ink-25)"/>
-            <text x="146" y="304" text-anchor="end" class="dwg-label--sm dwg-label">數字鍵盤</text>
-            <path d="M342 286 L342 300 L392 300" class="dwg-thin" stroke="var(--point)"/>
-            <text x="396" y="304" class="dwg-label--sm dwg-label dwg-label--point">線路鍵 3–15</text>
-          </svg>
+        <div class="figure__body phone-panel-body">
+          <p class="phone-panel__desc">點選任一按鍵，查看它對應的分機／線路號碼。內容可在 <code class="mono">data.js</code> 的 <code class="mono">phone.panel</code> 自行修改，不用改圖。</p>
+          <div class="phone-panel" id="phone-panel" role="group" aria-label="電話分線面板"></div>
+          <div class="phone-panel__readout" id="phone-panel-readout">
+            <span class="phone-panel__hint">尚未選擇按鍵</span>
+          </div>
         </div>
       </figure>
 
