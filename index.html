@@ -370,8 +370,46 @@
           <span>PANEL</span>
         </figcaption>
         <div class="figure__body phone-panel-body">
-          <p class="phone-panel__desc">點選任一按鍵，查看它對應的分機／線路號碼。內容可在 <code class="mono">data.js</code> 的 <code class="mono">phone.panel</code> 自行修改，不用改圖。</p>
-          <div class="phone-panel" id="phone-panel" role="group" aria-label="電話分線面板"></div>
+          <p class="phone-panel__desc">點選右側任一線路鍵，查看它對應的分機／線路號碼。內容可在 <code class="mono">data.js</code> 的 <code class="mono">phone.panel</code> 自行修改，不用改圖。</p>
+
+          <div class="phone-mock">
+            <svg class="phone-mock__art" viewBox="0 0 300 320" role="img" aria-label="桌上電話機身示意圖：左側為話筒與數字鍵盤，上方為顯示幕">
+              <!-- 話筒 -->
+              <g>
+                <path d="M30 46 Q18 40 24 62 L52 130 Q56 140 66 136 L74 132 Q84 128 78 118 L48 52 Q44 42 30 46 Z" class="dwg-fill"/>
+                <path d="M108 214 Q120 208 114 198 L84 130 Q80 120 70 124 L62 128 Q52 132 58 142 L88 208 Q92 218 108 214 Z" class="dwg-fill"/>
+                <path d="M66 136 Q86 178 84 130" class="dwg-thin"/>
+                <path d="M18 150 q-10 40 22 58 t46 -6" class="dwg-thin"/>
+              </g>
+
+              <!-- 機身 -->
+              <rect x="30" y="150" width="240" height="148" rx="14" class="dwg-fill" stroke-width="1.4"/>
+
+              <!-- 顯示模組 -->
+              <rect x="94" y="112" width="150" height="42" rx="9" class="dwg-fill" stroke-width="1.4"/>
+              <rect x="106" y="123" width="126" height="20" rx="4" fill="var(--surface)" class="dwg-thin"/>
+              <text x="169" y="137" text-anchor="middle" class="dwg-tag">CID</text>
+
+              <!-- 數字鍵盤 -->
+              <g fill="var(--surface)" stroke="var(--line)" stroke-width="1">
+                <rect x="50"  y="168" width="42" height="22" rx="5"/><rect x="100" y="168" width="42" height="22" rx="5"/><rect x="150" y="168" width="42" height="22" rx="5"/>
+                <rect x="50"  y="196" width="42" height="22" rx="5"/><rect x="100" y="196" width="42" height="22" rx="5"/><rect x="150" y="196" width="42" height="22" rx="5"/>
+                <rect x="50"  y="224" width="42" height="22" rx="5"/><rect x="100" y="224" width="42" height="22" rx="5"/><rect x="150" y="224" width="42" height="22" rx="5"/>
+                <rect x="50"  y="252" width="42" height="22" rx="5"/><rect x="100" y="252" width="42" height="22" rx="5"/><rect x="150" y="252" width="42" height="22" rx="5"/>
+              </g>
+              <g class="dwg-label--sm" style="font-family:var(--font-mono)" text-anchor="middle">
+                <text x="71" y="183">1</text><text x="121" y="183">2</text><text x="171" y="183">3</text>
+                <text x="71" y="211">4</text><text x="121" y="211">5</text><text x="171" y="211">6</text>
+                <text x="71" y="239">7</text><text x="121" y="239">8</text><text x="171" y="239">9</text>
+                <text x="71" y="267">*</text><text x="121" y="267">0</text><text x="171" y="267">#</text>
+              </g>
+
+              <text x="150" y="312" text-anchor="middle" class="dwg-label--sm dwg-label">數字鍵盤（示意，不可點）</text>
+            </svg>
+
+            <div class="phone-mock__lines" id="phone-panel" role="group" aria-label="電話分線面板"></div>
+          </div>
+
           <div class="phone-panel__readout" id="phone-panel-readout">
             <span class="phone-panel__hint">尚未選擇按鍵</span>
           </div>
