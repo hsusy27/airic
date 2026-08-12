@@ -725,3 +725,18 @@ body.locked { overflow: hidden; }
   .dial { padding: 4px 18px 16px; } .dial__k { width: 74px; }
   .phone-panel { grid-template-columns: repeat(3, 1fr); }
 }
+/* ── 機身圖片容器與定位設定 ── */
+.phone-mock {
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* 限制圖片最大寬度，可依需求微調 */
+  margin: 0 auto 16px; /* 居中並與下方 1-24 按鍵保持距離 */
+}
+
+/* 替換後的 HTML 圖片樣式 */
+.phone-mock__art {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
