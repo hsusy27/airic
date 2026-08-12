@@ -372,17 +372,12 @@
         <div class="figure__body phone-panel-body">
           <p class="phone-panel__desc">點選右側任一線路鍵，查看它對應的分機／線路號碼。內容可在 <code class="mono">data.js</code> 的 <code class="mono">phone.panel</code> 自行修改，不用改圖。</p>
 
-          <div class="phone-mock">
-            <!-- 🟢 替換後的程式碼 -->
 <div class="phone-mock">
-  <!-- 用 <img> 替換原本長長的 <svg>...</svg> -->
-  <img src="./img/phone.png" class="phone-mock__art" alt="電話機身" />
+  <!-- 補上 assets/ 才能正確存取到圖片 -->
+  <img src="./assets/img/phone.png" class="phone-mock__art" alt="電話機身" />
 
   <div class="phone-mock__lines" id="phone-panel" role="group" aria-label="電話分線面板"></div>
 </div>
-
-            <div class="phone-mock__lines" id="phone-panel" role="group" aria-label="電話分線面板"></div>
-          </div>
 
           <div class="phone-panel__readout" id="phone-panel-readout">
             <span class="phone-panel__hint">尚未選擇按鍵</span>
