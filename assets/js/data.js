@@ -176,7 +176,7 @@ const SITE = {
           seats: [
             { name: '劉芸伊', en: 'Zoe', ext: '137', group: 'law' },
             { name: '郭乃維', en: 'Sunny', ext: '139', group: 'law' },
-            { name: '張妙芬', en: 'Amy', ext: '141', group: 'law' },
+            { name: '何紀璋',  ext: '141', group: 'mis' },
             { name: '劉于國', en: 'Mike', ext: '143', group: 'law' },
           ],
         },
@@ -184,7 +184,7 @@ const SITE = {
           desk: '12528',
           seats: [
             { name: '李家禎', en: 'Ben', ext: '136', group: 'nlp' },
-            { empty: true, ext: '138' },
+            { name: '張妙芬', en: 'Amy', ext: '138', group: 'law' },
             { name: '吳如玉', en: 'Gina', ext: '140', group: 'mis' },
             { name: '張裕鑫', ext: '142', group: 'mis' },
           ],
@@ -228,7 +228,7 @@ const SITE = {
         {
           desk: '12522',
           seats: [
-            { empty: true, ext: '120' },
+            {  name: '方峻梃', en: 'Noen', ext: '120', group: 'image'  },
             { name: '賴亭諭', en: 'Noen', ext: '122', group: 'image' },
             { name: '阮登科', en: 'Khoa', ext: '124', group: 'image' },
             { name: '林敬庭', en: 'Kurt', ext: '126', group: 'image' },
